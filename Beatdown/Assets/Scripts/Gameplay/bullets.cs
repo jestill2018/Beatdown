@@ -4,7 +4,8 @@ using System.Collections;
 public class bullets : MonoBehaviour
 {
 
-	public Object bullet;
+	public Object bulletR;
+	public Object bulletL;
 	public GameObject player;
 
 	public Rigidbody2D rb2d;
@@ -18,7 +19,8 @@ public class bullets : MonoBehaviour
 	void Start ()
 	{
 		player = GameObject.Find ("Player");
-		bullet = Instantiate (Resources.Load ("Bullet"), player.transform.position, Quaternion.identity);
+		//bulletR = Instantiate (Resources.Load ("BulletRight"), player.transform.position, Quaternion.identity);
+		//bulletL = Instantiate (Resources.Load ("BulletLeft"), player.transform.position, Quaternion.identity);
 
 		//bullPos = player.transform.position;
 		move = new Vector2 (accel, accel) * accel * Time.deltaTime;
@@ -31,14 +33,11 @@ public class bullets : MonoBehaviour
 			Instantiate (bullet, player.transform.position, Quaternion.identity);
 		} */
 
-		if (Input.GetKey (KeyCode.UpArrow)) {
-			Instantiate (bullet, player.transform.position, Quaternion.identity);
-		} 	else if (Input.GetKey (KeyCode.RightArrow)) {
-			Instantiate (bullet, player.transform.position, Quaternion.identity);
-		} 	else if (Input.GetKey (KeyCode.DownArrow)) {
-			Instantiate (bullet, player.transform.position, Quaternion.identity);
-		} 	else if (Input.GetKey (KeyCode.LeftArrow)) {
-			Instantiate (bullet, player.transform.position, Quaternion.identity);
+		if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			Instantiate (bulletR, player.transform.position, Quaternion.identity);
+		}
+			else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			Instantiate (bulletL, player.transform.position, Quaternion.identity);
 		}
 		//rb2d.AddForce (new Vector2 (Input.mousePosition.x, Input.mousePosition.y), ForceMode2D.Impulse);
 	}
