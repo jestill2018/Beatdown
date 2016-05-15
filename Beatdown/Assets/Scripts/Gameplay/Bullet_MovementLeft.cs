@@ -11,7 +11,7 @@ public class Bullet_MovementLeft : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (Vector2.left * 400 * Time.deltaTime);
+		transform.Translate (Vector2.left * 100 * Time.deltaTime);
 
 		if (transform.position.x < -25) {
 			Destroy (gameObject, 1);
