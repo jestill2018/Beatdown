@@ -1,0 +1,13 @@
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/UnityEngine.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/UnityEditor.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Mono.Cecil.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Unity.DataContract.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/zabbott/Beatdown/Beatdown/Temp/bin/Debug/Mono.Cecil.Mdb.dll
