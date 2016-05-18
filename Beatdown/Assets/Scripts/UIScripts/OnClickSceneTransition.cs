@@ -11,11 +11,11 @@ public class OnClickSceneTransition : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		PlayButton (); 
+
 	}
 
-	void PlayButton() { 
-		SceneManager.LoadScene ("gameplay");
+	public void PlayButton() { 
+		SceneManager.LoadScene ("gameplayTest");
 	}
 
 	void SettingsButton() { 
