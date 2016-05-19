@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Gameplay\Bullet_MovementLeft.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Bullet_MovementRight.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Gameplay\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Gameplay\bullets.cs" />
      <Compile Include="Assets\Scripts\Gameplay\punching.cs" />
