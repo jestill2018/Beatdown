@@ -8,6 +8,7 @@ public class OnClick : MonoBehaviour {
 	public GameObject SettingsPanel; 
 	public GameObject PlayPanel; 
 	public GameObject CreditsPanel; 
+	public GameObject Disk; 
 	// Use this for initialization
 	void Start () {
 
@@ -40,11 +41,12 @@ public class OnClick : MonoBehaviour {
 	}
 
 	public void RotateRight() { 
-
+		Disk.transform.Rotate (0, 0, 90);
 
 	} 
 
 	public void RotateLeft() { 
+		Disk.transform.Rotate (0, 0, -90);
 
 
 	}
@@ -90,6 +92,7 @@ public class OnClick : MonoBehaviour {
 		CreditsPanel.SetActive (false); 
 
 	} 
+
 
 	//End of Credits Controls
 
