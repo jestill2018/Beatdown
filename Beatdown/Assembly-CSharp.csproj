@@ -48,6 +48,13 @@
      <Compile Include="Assets\Scripts\Gameplay\Bullet_MovementLeft.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Bullet_MovementRight.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\EnemyBulletController.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerBulletController.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerBulletV2.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerControllerV2.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerHealthManager.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerMovementV2.cs" />
      <Compile Include="Assets\Scripts\Gameplay\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Gameplay\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Gameplay\bullets.cs" />
