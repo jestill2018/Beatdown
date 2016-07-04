@@ -7,10 +7,10 @@ public class PlayerBulletV2 : MonoBehaviour {
 	float lifeTime;
 	public float lifeTimeLimit;
 	public int damageToGive;
-	public PlayerMovementV2 playerMovement;
+	public PlayerController playerMovement;
 
 	void Start () {
-		playerMovement = FindObjectOfType<PlayerMovementV2> ();
+		playerMovement = FindObjectOfType<PlayerController> ();
 
 		if (playerMovement.transform.localScale.x < 0) {
 			speed = -speed;
