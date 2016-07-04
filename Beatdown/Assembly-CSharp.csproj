@@ -59,8 +59,11 @@
      <Compile Include="Assets\Scripts\Gameplay\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Gameplay\bullets.cs" />
      <Compile Include="Assets\Scripts\Gameplay\punching.cs" />
+     <Compile Include="Assets\Scripts\SceneTransition.cs" />
+     <Compile Include="Assets\Scripts\UIScripts\Dialogue.cs" />
      <Compile Include="Assets\Scripts\UIScripts\OnClick.cs" />
      <Compile Include="Assets\Scripts\UIScripts\RaycastMask.cs" />
+     <Compile Include="Assets\Scripts\UIScripts\TextBoxTest.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
