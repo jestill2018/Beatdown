@@ -45,20 +45,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Gameplay\Bullet_MovementLeft.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\Bullet_MovementRight.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\EnemyScript.cs" />
      <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\EnemyBulletController.cs" />
      <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerBulletController.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerBulletV2.cs" />
      <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerControllerV2.cs" />
      <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerHealthManager.cs" />
      <Compile Include="Assets\Scripts\Gameplay\OptimizedScripts\PlayerMovementV2.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\TransformationController.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\bullets.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\punching.cs" />
+     <Compile Include="Assets\Scripts\MAYBENotNeeded\Bullet_MovementLeft.cs" />
+     <Compile Include="Assets\Scripts\MAYBENotNeeded\Bullet_MovementRight.cs" />
+     <Compile Include="Assets\Scripts\MAYBENotNeeded\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\MAYBENotNeeded\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\MAYBENotNeeded\TransformationController.cs" />
+     <Compile Include="Assets\Scripts\MAYBENotNeeded\bullets.cs" />
+     <Compile Include="Assets\Scripts\MAYBENotNeeded\punching.cs" />
+     <Compile Include="Assets\Scripts\PlayerBulletV2.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\UIScripts\Dialogue.cs" />
