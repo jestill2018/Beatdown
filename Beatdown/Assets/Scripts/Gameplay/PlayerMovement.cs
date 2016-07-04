@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		if (punch.isPunching == false) {
+		//if (punch.isPunching == false) {
 
 			if (Input.GetKey (KeyCode.W)) {
 				rb2d.AddForce (new Vector2 (0, move.y), ForceMode2D.Impulse);
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 				float angle = Mathf.Atan2 (dir.x, dir.y) * Mathf.Rad2Deg;
 
 			}
-		}
+		//}
 	}
 
 	public Vector2 getPosition()
