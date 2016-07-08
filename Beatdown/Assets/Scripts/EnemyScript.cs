@@ -15,6 +15,9 @@ public class EnemyScript : MonoBehaviour {
 
 	}
 
+	public GameObject EnemyBullet; 
+	public Transform EnemyBulletSpawn; 
+
 	public State state; 
 
 	// Use this for initialization
@@ -36,17 +39,9 @@ public class EnemyScript : MonoBehaviour {
 
 		CloseRangeShift ();
 		LongRangeShift ();
+		Shoot ();
 	}
 		
-
-	/*void OnTriggerEnter2D(Collider2D other) { 
-
-		if (other.gameObject.tag == "Player") {
-			state = State.Far; 
-			shouldBeShooting = true; 
-
-		}
-	}*/
 
 	void NotSeenState() { 
 		if (Vector3.Distance (transform.position, target.position) > 21f) {
@@ -71,33 +66,13 @@ public class EnemyScript : MonoBehaviour {
 		}
 	}
 
-	/*void OnCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.tag == "Player") { 
-			CloseSpotted = true;
-			shouldBeShooting = false; 
-		}
-
-	}
-
-	void OnTriggerExit2D(Collider2D other) { 
-
-		if (other.gameObject.tag == "Player") {
-			state = State.NotChasing; 
-
-		}
-	}*/
 	void Chase() { 
 		transform.position = Vector3.MoveTowards (transform.position, target.position, speed * Time.deltaTime); 
-
-		/*if (Vector3.Distance (transform.position, target.position) > 1f) {
-			transform.Translate(new Vector3(speed* Time.deltaTime,0,0) );			
-		}*/
 	}
 
 	void Shoot() { 
-		if (shouldBeShooting == true) { 
-			//instantiate own bullet and send it towards player
-
+		while (state == State.Far) { 
+			Instantiate (EnemyBullet, EnemyBulletSpawn.position, EnemyBulletSpawn.rotation);
 		}
 
 
