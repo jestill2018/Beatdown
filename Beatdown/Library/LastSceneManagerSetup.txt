@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/TextBox Test.unity
+- path: Assets/Scenes/Zach'sGameplayScene.unity
   isLoaded: 1
   isActive: 1
