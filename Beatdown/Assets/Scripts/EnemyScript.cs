@@ -20,10 +20,12 @@ public class EnemyScript : MonoBehaviour {
 
 	public State state; 
 
+	public int enemyHealth;
+
 	// Use this for initialization
 	void Start () {
 		state = State.NotChasing;
-
+		enemyHealth = 100;
 	}
 	
 	// Update is called once per frame
@@ -40,6 +42,7 @@ public class EnemyScript : MonoBehaviour {
 		CloseRangeShift ();
 		LongRangeShift ();
 		Shoot ();
+		EnemyHealth ();
 	}
 		
 
@@ -77,4 +80,17 @@ public class EnemyScript : MonoBehaviour {
 
 
 	} 
+
+	void EnemyHealth ()
+	{
+		if (enemyHealth <= 0) {
+			Destroy (gameObject);
+		}
+	}
+
+	public void EnemyRecieveDamage (int damageToGive)
+	{
+		enemyHealth -= damageToGive;
+		print ("DAMAGE RECIEVED");
+	}
 }
