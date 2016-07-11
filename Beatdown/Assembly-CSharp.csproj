@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\EnemyBulletCode.cs" />
+     <Compile Include="Assets\Scripts\EnemyCount.cs" />
      <Compile Include="Assets\Scripts\EnemyScript.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CheckPoints.cs" />
      <Compile Include="Assets\Scripts\Gameplay\EnemyBulletController.cs" />
