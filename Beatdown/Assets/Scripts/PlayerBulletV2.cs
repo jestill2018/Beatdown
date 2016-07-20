@@ -29,7 +29,7 @@ public class PlayerBulletV2 : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Enemy") {
-//			other.GetComponent<EnemyController>().EnemyRecieveDamage(damageToGive); //This line of code passes on to the enemy script the amount of damage that this particular bullet does to the enemy.
+			other.GetComponent<EnemyController>().EnemyRecieveDamage(damageToGive); //This line of code passes on to the enemy script the amount of damage that this particular bullet does to the enemy.
 			Destroy (gameObject);
 		}
 	}
