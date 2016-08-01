@@ -17,7 +17,7 @@ public class EnemyBulletController : MonoBehaviour {
 			speed = -speed;
 		}
 
-		print (enemy.transform.localScale.x);
+		//print (enemy.transform.localScale.x);
 	}
 
 	void Update () {
