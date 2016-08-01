@@ -3,10 +3,17 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
+	//public Vector2 BoxCastStartPoint; 
+	//public Vector2 BoxCastSizeOfArea;
+//	public float BoxCastAngle; 
+
+
+	//public bool RayCastPlayerIsRight = false; 
 	public Transform target; 
 	public float speed = 3f; 
 	public bool CloseSpotted; 
 	public bool shouldBeShooting; 
+
 	public enum State { 
 		Far, 
 		Close, 
@@ -44,6 +51,7 @@ public class EnemyController : MonoBehaviour {
 		LongRangeShift ();
 		Shoot ();
 		EnemyHealth ();
+
 
 	}
 
@@ -90,8 +98,15 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
+
+
+
 	public void EnemyRecieveDamage (int damageToGive)
 	{
 		enemyHealth -= damageToGive;
+		print (enemyHealth);
 	}
+
+
+
 }
