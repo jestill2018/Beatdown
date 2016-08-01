@@ -2,7 +2,7 @@
 using System.Linq; 
 using System.Collections;
 
-public class BoxCastAttempt : MonoBehaviour {
+public class BoxCastRight: MonoBehaviour {
 
 	public Rect Box; 
 	public Vector2 Direction;
@@ -43,7 +43,7 @@ public class BoxCastAttempt : MonoBehaviour {
 	void Start () {
 		Player = GameObject.FindWithTag ("Player");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		hits = Physics2D.BoxCastAll ((Vector2)this.transform.position + Box.center, 
@@ -53,7 +53,7 @@ public class BoxCastAttempt : MonoBehaviour {
 		hitGO = hits.Where (x => x.collider != null).Select (x => x.collider.gameObject).ToArray ();
 		if (firstHit == Player) {
 
-			print ("FOUND HIM");
+			print ("FOUND HIM Right");
 		} 
 
 	}
