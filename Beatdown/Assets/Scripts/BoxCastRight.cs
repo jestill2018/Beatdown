@@ -53,7 +53,7 @@ public class BoxCastRight: MonoBehaviour {
 		hitGO = hits.Where (x => x.collider != null).Select (x => x.collider.gameObject).ToArray ();
 		if (firstHit == Player) {
 
-			print ("FOUND HIM Right");
+			transform.localScale = new Vector3(1, 1);
 		} 
 
 	}
