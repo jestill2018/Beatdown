@@ -56,7 +56,7 @@ public class BoxCastLeft : MonoBehaviour {
 		hitGO = hits.Where (x => x.collider != null).Select (x => x.collider.gameObject).ToArray ();
 		if (firstHit == Player) {
 
-			gameObject.transform.localScale.x *= -1; 
+			transform.localScale = new Vector3(-1, 1);
 		
 		} 
 
