@@ -24,7 +24,7 @@ public class EnemyCount : MonoBehaviour {
 		}
 
 		if (PlayerPrefs.GetInt ("isEmpty") == 0) {
-			enemyHolder.SetActive = false;
+			enemyHolder.SetActive(false);
 		}
 	}
 }
