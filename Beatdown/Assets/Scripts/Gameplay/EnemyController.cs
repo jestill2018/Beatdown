@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour {
 	public float speed = 3f; 
 	public bool CloseSpotted; 
 	public bool shouldBeShooting; 
+	private float ShootTimer = 0.5f; 
 
 	public enum State { 
 		Far, 
@@ -40,17 +41,23 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
 		if(state == State.Far) {
 			//print ("state is far");
+
+			ShootTimer -= Time.deltaTime; 
+
 			Chase (); 
+			LongRangeShift (); 
 		}
 
 		if (state == State.NotChasing) { 
 			print ("state is not chasing");
 		}
 
+
+
 		CloseRangeShift ();
 		LongRangeShift ();
-		Shoot ();
 		EnemyHealth ();
+		print (ShootTimer);
 
 
 	}
@@ -75,7 +82,10 @@ public class EnemyController : MonoBehaviour {
 		if (Vector3.Distance (transform.position, target.position) < 20f) {
 			state = State.Far; 
 			print ("Distance State is far");
-
+			if (ShootTimer <= 0) {
+				Shoot ();
+				ShootTimer = 0.5f; 
+			}
 		}
 	}
 
@@ -85,8 +95,10 @@ public class EnemyController : MonoBehaviour {
 
 	void Shoot() { 
 //		while (state == State.Far) { 
+
+	
 			Instantiate (EnemyBullet, EnemyBulletSpawn.position, EnemyBulletSpawn.rotation);
-//		}
+	
 
 
 	} 
