@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour {
 		}
 
 		if (state == State.NotChasing) { 
-			print ("state is not chasing");
+		//	print ("state is not chasing");
 		}
 
 
@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour {
 		CloseRangeShift ();
 		LongRangeShift ();
 		EnemyHealth ();
-		print (ShootTimer);
+		//print (ShootTimer);
 
 
 	}
@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour {
 	void CloseRangeShift() { 
 		if (Vector3.Distance (transform.position, target.position) < 5f) {
 			state = State.Close; 
-			print ("Close Range");
+			//print ("Close Range");
 		}
 
 	}
@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour {
 	void LongRangeShift() { 
 		if (Vector3.Distance (transform.position, target.position) < 20f) {
 			state = State.Far; 
-			print ("Distance State is far");
+			//print ("Distance State is far");
 			if (ShootTimer <= 0) {
 				Shoot ();
 				ShootTimer = 0.5f; 
