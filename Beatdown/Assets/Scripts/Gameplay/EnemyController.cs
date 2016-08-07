@@ -3,10 +3,18 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
+	//public Vector2 BoxCastStartPoint; 
+	//public Vector2 BoxCastSizeOfArea;
+//	public float BoxCastAngle; 
+
+
+	//public bool RayCastPlayerIsRight = false; 
 	public Transform target; 
 	public float speed = 3f; 
 	public bool CloseSpotted; 
 	public bool shouldBeShooting; 
+	private float ShootTimer = 0.5f; 
+
 	public enum State { 
 		Far, 
 		Close, 
@@ -33,17 +41,24 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
 		if(state == State.Far) {
 			//print ("state is far");
+
+			ShootTimer -= Time.deltaTime; 
+
 			Chase (); 
+			LongRangeShift (); 
 		}
 
 		if (state == State.NotChasing) { 
-			print ("state is not chasing");
+		//	print ("state is not chasing");
 		}
+
+
 
 		CloseRangeShift ();
 		LongRangeShift ();
-		Shoot ();
 		EnemyHealth ();
+		//print (ShootTimer);
+
 
 	}
 
@@ -58,7 +73,7 @@ public class EnemyController : MonoBehaviour {
 	void CloseRangeShift() { 
 		if (Vector3.Distance (transform.position, target.position) < 5f) {
 			state = State.Close; 
-			print ("Close Range");
+			//print ("Close Range");
 		}
 
 	}
@@ -66,8 +81,11 @@ public class EnemyController : MonoBehaviour {
 	void LongRangeShift() { 
 		if (Vector3.Distance (transform.position, target.position) < 20f) {
 			state = State.Far; 
-			print ("Distance State is far");
-
+			//print ("Distance State is far");
+			if (ShootTimer <= 0) {
+				Shoot ();
+				ShootTimer = 0.5f; 
+			}
 		}
 	}
 
@@ -77,8 +95,10 @@ public class EnemyController : MonoBehaviour {
 
 	void Shoot() { 
 //		while (state == State.Far) { 
+
+	
 			Instantiate (EnemyBullet, EnemyBulletSpawn.position, EnemyBulletSpawn.rotation);
-//		}
+	
 
 
 	} 
@@ -90,8 +110,15 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
+
+
+
 	public void EnemyRecieveDamage (int damageToGive)
 	{
 		enemyHealth -= damageToGive;
+		print (enemyHealth);
 	}
+
+
+
 }

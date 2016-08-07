@@ -8,23 +8,58 @@ public class EnemyBulletController : MonoBehaviour {
 	float lifeTimer;
 	public float lifeTimerLimit;
 	public float damageToGivePlayer;
+	public Vector3 PlayerPositionAtSpawn; 
+	public Vector3 EnemyBulletSpawnLocation; 
+
+	public GameObject Player; 
+	private float StartTime; 
+	private float MoveLength; 
+	public GameObject BulletSpawnPoint; 
+	public BoxCastRight RightBox;
+	public BoxCastLeft LeftBox; 
+
+
 
 
 	void Start () {
+		Player = GameObject.FindWithTag ("Player"); 
+		BulletSpawnPoint = GameObject.FindWithTag ("EnemyBulletSpawn"); 
 		enemy = FindObjectOfType<EnemyController> ();
+		RightBox = FindObjectOfType<BoxCastRight> ();
+		LeftBox = FindObjectOfType<BoxCastLeft> ();
+
+
+
 
 		if (enemy.transform.localScale.x < 0) {
 			speed = -speed;
 		}
 
-		print (enemy.transform.localScale.x);
+		PlayerPositionAtSpawn = Player.transform.position;
+		EnemyBulletSpawnLocation = BulletSpawnPoint.transform.position;
+		StartTime = Time.time;
+		MoveLength = Vector3.Distance (EnemyBulletSpawnLocation, PlayerPositionAtSpawn);
+
+
+		//print (enemy.transform.localScale.x);
 	}
 
 	void Update () {
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (speed, GetComponent<Rigidbody2D> ().velocity.y);
+	//	GetComponent<Rigidbody2D> ().velocity = new Vector2 (speed, GetComponent<Rigidbody2D> ().velocity.y);
+		if (LeftBox.facingLeft == true) { 
+			float distanceCovered = (Time.time - StartTime) * -speed; 
+			float Journey = distanceCovered / MoveLength; 
+			transform.position = Vector3.Lerp (EnemyBulletSpawnLocation, PlayerPositionAtSpawn, Journey);
+			print (MoveLength);
+			lifeTimer += Time.deltaTime;
+		} if(RightBox.facingRight == true) { 
 
-		lifeTimer += Time.deltaTime;
-
+			float distanceCovered = (Time.time - StartTime) * speed; 
+			float Journey = distanceCovered / MoveLength; 
+			transform.position = Vector3.Lerp (EnemyBulletSpawnLocation, PlayerPositionAtSpawn, Journey);
+			print (MoveLength);
+			lifeTimer += Time.deltaTime;
+		}
 		if (lifeTimer > lifeTimerLimit) {
 			Destroy (gameObject);
 		}
