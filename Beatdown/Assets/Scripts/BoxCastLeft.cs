@@ -12,7 +12,9 @@ public class BoxCastLeft : MonoBehaviour {
 	public RaycastHit2D firstHit; 
 	public LayerMask mask; 
 	public GameObject Player;
-	public bool ShouldBeFacingLeft = false; 
+	public bool facingLeft = false; 
+	public BoxCastRight RightBox; 
+
 
 
 	void OnDrawGizmos() { 
@@ -44,6 +46,7 @@ public class BoxCastLeft : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.FindWithTag ("Player");
+		RightBox = FindObjectOfType<BoxCastRight> ();
 
 	}
 	
@@ -55,6 +58,10 @@ public class BoxCastLeft : MonoBehaviour {
 		firstHit = Physics2D.BoxCast ((Vector2)this.transform.position + Box.center, Box.size, this.transform.eulerAngles.z, Direction, Distance, mask);
 		hitGO = hits.Where (x => x.collider != null).Select (x => x.collider.gameObject).ToArray ();
 		if (firstHit == Player) {
+			facingLeft = true; 
+			if (facingLeft == true) { 
+				RightBox.facingRight = false; 
+			} 
 
 			transform.localScale = new Vector3(-1, 1);
 		

@@ -15,7 +15,8 @@ public class EnemyBulletController : MonoBehaviour {
 	private float StartTime; 
 	private float MoveLength; 
 	public GameObject BulletSpawnPoint; 
-
+	public BoxCastRight RightBox;
+	public BoxCastLeft LeftBox; 
 
 
 
@@ -24,6 +25,11 @@ public class EnemyBulletController : MonoBehaviour {
 		Player = GameObject.FindWithTag ("Player"); 
 		BulletSpawnPoint = GameObject.FindWithTag ("EnemyBulletSpawn"); 
 		enemy = FindObjectOfType<EnemyController> ();
+		RightBox = FindObjectOfType<BoxCastRight> ();
+		LeftBox = FindObjectOfType<BoxCastLeft> ();
+
+
+
 
 		if (enemy.transform.localScale.x < 0) {
 			speed = -speed;
@@ -34,17 +40,26 @@ public class EnemyBulletController : MonoBehaviour {
 		StartTime = Time.time;
 		MoveLength = Vector3.Distance (EnemyBulletSpawnLocation, PlayerPositionAtSpawn);
 
+
 		//print (enemy.transform.localScale.x);
 	}
 
 	void Update () {
 	//	GetComponent<Rigidbody2D> ().velocity = new Vector2 (speed, GetComponent<Rigidbody2D> ().velocity.y);
-		float distanceCovered = (Time.time - StartTime) * speed; 
-		float Journey = distanceCovered / MoveLength; 
-		transform.position = Vector3.Lerp (EnemyBulletSpawnLocation, PlayerPositionAtSpawn, Journey);
-		print (MoveLength);
-		lifeTimer += Time.deltaTime;
+		if (LeftBox.facingLeft == true) { 
+			float distanceCovered = (Time.time - StartTime) * -speed; 
+			float Journey = distanceCovered / MoveLength; 
+			transform.position = Vector3.Lerp (EnemyBulletSpawnLocation, PlayerPositionAtSpawn, Journey);
+			print (MoveLength);
+			lifeTimer += Time.deltaTime;
+		} if(RightBox.facingRight == true) { 
 
+			float distanceCovered = (Time.time - StartTime) * speed; 
+			float Journey = distanceCovered / MoveLength; 
+			transform.position = Vector3.Lerp (EnemyBulletSpawnLocation, PlayerPositionAtSpawn, Journey);
+			print (MoveLength);
+			lifeTimer += Time.deltaTime;
+		}
 		if (lifeTimer > lifeTimerLimit) {
 			Destroy (gameObject);
 		}
