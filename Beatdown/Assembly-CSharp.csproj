@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\OldScripts\bullets.cs" />
      <Compile Include="Assets\Scripts\OldScripts\punching.cs" />
      <Compile Include="Assets\Scripts\PlayerBulletV2.cs" />
+     <Compile Include="Assets\Scripts\PunchDestroyScript.cs" />
      <Compile Include="Assets\Scripts\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\UIScripts\Dialogue.cs" />
      <Compile Include="Assets\Scripts\UIScripts\OnClick.cs" />
