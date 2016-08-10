@@ -16,8 +16,7 @@ public class EnemyController : MonoBehaviour {
 	private float ShootTimer = 0.5f; 
 	public GameObject EnemyPunchSprite; 
 	public Vector3 PunchPosition; 
-	public float PunchDestroyTimer = 0.5f; 
-	public float PunchSpawnTimer = 0.4f; 
+	public float PunchSpawnTimer = 3f; 
 	public GameObject PunchHolder; 
 	public BoxCastRight RightBox; 
 	public BoxCastLeft LeftBox; 
@@ -53,59 +52,57 @@ public class EnemyController : MonoBehaviour {
 
 
 	void Update () {
+	
+		//Punch Position Determination
 		if (RightBox.facingRight == true) {
 			PunchPosition = new Vector3 (transform.position.x + 3f, transform.position.y);
 		}
 		if (LeftBox.facingLeft == true) { 
 			PunchPosition = new Vector3 (transform.position.x - 3f, transform.position.y);
 		}
+		//End of Punch Position Determination
 
-
-		if (state == State.NotChasing) { 
-			//print ("state is not chasing");
-		}
-
-		if(state == State.Far) {
-			//print ("state is far");
-			LongRangeBehaviours();
-			ShootTimer -= Time.deltaTime; 
-		}
-
-
-		if (state == State.Close) { 
-			//print ("state is close");
-			Chase(); 
-		}
-
-		if (state == State.MeleeProximity) {
-			CloseRangeBehaviours (); 
-			PunchSpawnTimer -= Time.deltaTime; 
-			PunchDestroyTimer -= Time.deltaTime; 
-		}
-
-
+		//State Transitions and function calls 
 
 		NotSeenState ();
 		LongRangeShift ();
 		CloseRangeShift ();
 		MeleeProximityShift ();
-
 		EnemyHealth ();
-	
+
+
+		if (state == State.NotChasing) { 
+			//Set up for idle animation to be put here
+		}
+
+		if(state == State.Far) {
+			LongRangeBehaviours();
+			ShootTimer -= Time.deltaTime; 
+		}
+			
+		if (state == State.Close) { 
+			CloseRangeBehaviours(); 
+		}
+
+		if (state == State.MeleeProximity) {
+			MeleeRangeBehaviours (); 
+			PunchSpawnTimer -= Time.deltaTime; 
+		 
+		}
+			
 
 
 	}
 
 
+	//State Shift parameters
 	void NotSeenState() { 
 		if (Vector3.Distance (transform.position, target.position) > 50f) {
 			state = State.NotChasing; 
 		}
 
 	}
-
-
-	//Holds long range shift code and actions for enemy AI 
+		
 	void LongRangeShift() { 
 		if (Vector3.Distance (transform.position, target.position) < 49f) {
 			state = State.Far; 
@@ -122,29 +119,34 @@ public class EnemyController : MonoBehaviour {
 	void MeleeProximityShift() { 
 		if(Vector3.Distance(transform.position, target.position) < 10f) {
 			state = State.MeleeProximity;
-			print ("should be punchin");
 		}
-
 	} 
+	//End of state shift parameteres
 
+
+
+	//State Behaviour Holders
 	void LongRangeBehaviours() { 
 		if (ShootTimer <= 0) {
 			Shoot ();
 			ShootTimer = 0.5f; 
 		}
 	} 
-	//Break Long Range parameters and actoins
-
-
-	//Holds close range actions for enemy AI
-
-
+		
 	void CloseRangeBehaviours() { 
-		Punch (); 
+		Chase ();
 	}
 
 
+	void MeleeRangeBehaviours() { 
+		Punch (); 
+	}
 
+	//State Behaviour Holders end
+
+
+
+	//Behaviour Functions
 	void Chase() { 
 		transform.position = Vector3.MoveTowards (transform.position, target.position, speed * Time.deltaTime); 
 	}
@@ -154,15 +156,26 @@ public class EnemyController : MonoBehaviour {
 			Instantiate (EnemyBullet, EnemyBulletSpawn.position, EnemyBulletSpawn.rotation);
 	} 
 
+	void Punch() { 
+		if (PunchSpawnTimer <= 0) { 
+			Instantiate (EnemyPunchSprite, PunchPosition, EnemyBulletSpawn.rotation);
+			PunchSpawnTimer = 3f; 
+		}
+		 
+
+	}
+	//Behviour Functions End
+
+
+
+	//Other 
 	void EnemyHealth ()
 	{
 		if (enemyHealth <= 0) {
 			Destroy (gameObject);
 		}
 	}
-
-
-
+		
 
 	public void EnemyRecieveDamage (int damageToGive)
 	{
@@ -170,21 +183,7 @@ public class EnemyController : MonoBehaviour {
 
 	}
 
-	void Punch() { 
-		if (PunchSpawnTimer <= 0) { 
-			Instantiate (EnemyPunchSprite, PunchPosition, EnemyBulletSpawn.rotation);
-			PunchSpawnTimer = 0.4f; 
-		}
-		if (PunchDestroyTimer <= 0) { 
-			PunchHolder = (GameObject.FindGameObjectWithTag ("EnemyPunch")); 
-			Destroy (PunchHolder);
-			PunchDestroyTimer = 0.5f;
-		} 
 
-
-
-
-	}
 
 
 
